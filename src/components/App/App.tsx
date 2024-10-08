@@ -20,6 +20,11 @@ type Data = {
   description: string;
 }[];
 
+type photo = {
+  totalPages: number;
+  photo: Data;
+}
+
 
 export default function App() {
 
@@ -42,7 +47,7 @@ export default function App() {
       try {
         setLoading(true);
         setError(false);
-        const res = await fetchPhoto(topic, page);
+        const res:photo = await fetchPhoto(topic, page);
         setPhotos((prevState) => [...prevState, ...res.photo]);
         setTotalPages(res.totalPages);
       } catch (error) {
